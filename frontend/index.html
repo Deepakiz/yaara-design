@@ -1622,26 +1622,42 @@
             });
         });
 
-        // Form Submission
-        function submitForm(e) {
+        // Form Submission - Send to API
+        async function submitForm(e) {
             e.preventDefault();
 
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value;
+            const submitBtn = document.querySelector('.form-submit');
 
             if (name && phone && message) {
-                const formSuccess = document.getElementById('formSuccess');
-                formSuccess.classList.add('show');
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
 
-                // Reset form
-                document.getElementById('enquiryForm').reset();
+                try {
+                    const response = await fetch('/api/enquiries', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ name, phone, service, message })
+                    });
+                    const result = await response.json();
 
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    formSuccess.classList.remove('show');
-                }, 5000);
+                    if (result.status === 'success') {
+                        document.getElementById('formSuccess').classList.add('show');
+                        document.getElementById('enquiryForm').reset();
+                        setTimeout(() => {
+                            document.getElementById('formSuccess').classList.remove('show');
+                        }, 5000);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Failed to send enquiry. Please try again.');
+                } finally {
+                    submitBtn.textContent = 'Send Enquiry';
+                    submitBtn.disabled = false;
+                }
             }
         }
 
