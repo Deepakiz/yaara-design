@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Yaara Design - Custom fashion designer offering bespoke outfits, designer wear, costume design, and personalized styling. Made with love.">
+    <meta name="keywords"
+        content="costume designer, fashion designer, custom outfits, designer wear, personalized fashion styling, handcrafted fashion">
+    <title>Yaara Design | Custom Fashion Made With Love</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #2C2C2C;
+            --secondary: #F5F0EB;
+            --accent: #D4A574;
+            --accent-light: #E8DDD4;
+            --background: #FDFBF9;
+            --text-primary: #2C2C2C;
+            --text-secondary: #6B6B6B;
+            --text-light: #FFFFFF;
+            --border: #E5E0DB;
+            --shadow: 0 8px 32px rgba(44, 44, 44, 0.08);
+            --shadow-hover: 0 16px 48px rgba(44, 44, 44, 0.12);
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Jost', sans-serif;
+        }
+
+        /* Reset & Base */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--background);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Utility Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(253, 251, 249, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .logo-main {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--primary);
+        }
+
+        .logo-sub {
+            font-family: var(--font-body);
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 12px 28px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--background);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            transition: right 0.5s ease;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu .nav-link {
+            font-size: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px 80px;
+            background: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(232, 221, 212, 0.5) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--text-light);
+            padding: 8px 24px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 32px;
+            border: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        .hero h1 span {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 18px 48px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .hero-cta:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-decoration {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px solid var(--accent);
+            opacity: 0.3;
+            border-radius: 50%;
+        }
+
+        .hero-decoration.top-right {
+            top: 10%;
+            right: 10%;
+        }
+
+        .hero-decoration.bottom-left {
+            bottom: 10%;
+            left: 10%;
+        }
+
+        /* Services Preview Section */
+        .services-preview {
+            padding: 100px 0;
+            background: var(--background);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--text-light);
+            padding: 40px 32px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .service-link:hover {
+            gap: 12px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--secondary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-main {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image-main::before {
+            content: '✦';
+            font-size: 200px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .about-image-accent {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            z-index: -1;
+        }
+
+        .about-content .section-tag {
+            text-align: left;
+        }
+
+        .about-content .section-title {
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .about-text {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 16px;
+        }
+
+        .about-signature {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-style: italic;
+            color: var(--accent);
+            margin-top: 32px;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 100px 0;
+            background: var(--background);
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-filter {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .gallery-filter::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .gallery-filter:hover,
+        .gallery-filter.active {
+            color: var(--primary);
+        }
+
+        .gallery-filter:hover::after,
+        .gallery-filter.active::after {
+            width: 100%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(4) {
+            grid-column: span 2;
+        }
+
+        .gallery-bg {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .gallery-bg::before {
+            content: attr(data-category);
+            font-family: var(--font-heading);
+            font-size: 18px;
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        .gallery-item:hover .gallery-bg {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 44, 44, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--text-light);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 1px solid var(--text-light);
+            padding: 12px 24px;
+        }
+
+        /* Full Services Section */
+        .services-full {
+            padding: 100px 0;
+            background: var(--secondary);
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .service-full-card {
+            background: var(--text-light);
+            padding: 48px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .service-full-card:hover {
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .service-full-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .service-full-content h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .service-full-content p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .service-full-btn {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 12px 28px;
+            transition: var(--transition);
+        }
+
+        .service-full-btn:hover {
+            background: var(--primary);
+            color: var(--text-light);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--background);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--text-light);
+            padding: 40px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-stars {
+            color: var(--accent);
+            font-size: 18px;
+            margin-bottom: 20px;
+            letter-spacing: 4px;
+        }
+
+        .testimonial-text {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--secondary);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h3 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .contact-info p {
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .contact-method-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .contact-form {
+            background: var(--text-light);
+            padding: 48px;
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 16px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            border: 1px solid var(--border);
+            background: var(--background);
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 18px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .form-submit:hover {
+            background: var(--accent);
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            color: #155724;
+            margin-top: 16px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--text-light);
+            padding: 80px 0 32px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-brand .logo-main {
+            color: var(--text-light);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+        }
+
+        .footer-title {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 32px;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-grid {
+                gap: 40px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-row: span 1;
+            }
+
+            .gallery-item:nth-child(4) {
+                grid-column: span 1;
+            }
+
+            .services-list {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                gap: 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .nav,
+            .nav-cta {
+                display: none;
+            }
+
+            .menu-toggle,
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero {
+                padding: 100px 24px 60px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .hero-decoration {
+                display: none;
+            }
+
+            .services-preview,
+            .about,
+            .gallery,
+            .services-full,
+            .testimonials,
+            .contact {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image-main {
+                height: 350px;
+            }
+
+            .gallery-filters {
+                gap: 16px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 32px 24px;
+            }
+
+            .service-full-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .service-full-icon {
+                margin: 0 auto;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 54px;
+                height: 54px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-cta {
+                padding: 16px 32px;
+                font-size: 13px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .testimonial-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <span class="logo-main">🎀YAARA</span>
+                <span class="logo-sub">Design</span>
+            </a>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <a href="#contact" class="nav-cta">Order Now</a>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" class="nav-link" onclick="toggleMenu()">Home</a>
+        <a href="#about" class="nav-link" onclick="toggleMenu()">About</a>
+        <a href="#services" class="nav-link" onclick="toggleMenu()">Services</a>
+        <a href="#gallery" class="nav-link" onclick="toggleMenu()">Gallery</a>
+        <a href="#contact" class="nav-link" onclick="toggleMenu()">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-decoration top-right"></div>
+        <div class="hero-decoration bottom-left"></div>
+        <div class="hero-content fade-in">
+            <span class="hero-badge">Made with love 🧶</span>
+            <h1>Custom Fashion Made <span>With Love</span></h1>
+            <p class="hero-subtitle">Handcrafted designer outfits and custom costumes tailored to your unique style.
+                Every piece tells a story of creativity and craftsmanship.</p>
+            <a href="#contact" class="hero-cta">Order Your Outfit</a>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="services-preview" id="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag">What We Offer</span>
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Discover our range of personalized fashion services designed to bring your
+                    vision to life.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <span class="service-icon">👗</span>
+                    <h3>Custom Outfits</h3>
+                    <p>Bespoke clothing designed and stitched exclusively for you.</p>
+                    <a href="#contact" class="service-link">Enquire Now →</a>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">✨</span>
+                    <h3>Designer Wear</h3>
+                    <p>Ready-to-wear collections featuring contemporary elegance.</p>
+                    <a href="#contact" class="service-link">Enquire Now →</a>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🧵</span>
+                    <h3>Costume Design</h3>
+                    <p>Custom costumes for performances and special occasions.</p>
+                    <a href="#contact" class="service-link">Enquire Now →</a>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">💃</span>
+                    <h3>Personal Styling</h3>
+                    <p>One-on-one consultation to curate your perfect wardrobe.</p>
+                    <a href="#contact" class="service-link">Enquire Now →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image fade-in">
+                    <div class="about-image-main"></div>
+                    <div class="about-image-accent"></div>
+                </div>
+                <div class="about-content fade-in">
+                    <span class="section-tag">Our Story</span>
+                    <h2 class="section-title">The Story of Yaara Design</h2>
+                    <p class="about-text">Yaara Design was born from a passion for creating beautiful, one-of-a-kind
+                        fashion pieces. We believe that every person deserves to wear something that reflects their
+                        unique personality and style.</p>
+                    <p class="about-text">Our approach combines traditional craftsmanship with contemporary design,
+                        resulting in outfits that are both timeless and uniquely yours. Each piece is made with love,
+                        attention to detail, and a commitment to quality.</p>
+                    <p class="about-text">Whether you're looking for a custom outfit for a special occasion, a stunning
+                        costume for a performance, or simply want to elevate your personal style, we're here to bring
+                        your vision to life.</p>
+                    <span class="about-signature">— Yaara Design</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Our Work</span>
+                <h2 class="section-title">Gallery</h2>
+                <p class="section-subtitle">Explore our collection of custom designs and creations.</p>
+            </div>
+            <div class="gallery-filters fade-in">
+                <span class="gallery-filter active" data-filter="all">All</span>
+                <span class="gallery-filter" data-filter="outfits">Custom Outfits</span>
+                <span class="gallery-filter" data-filter="designer">Designer Wear</span>
+                <span class="gallery-filter" data-filter="costumes">Costumes</span>
+            </div>
+            <div class="gallery-grid fade-in">
+                <div class="gallery-item" data-category="Custom Outfits">
+                    <div class="gallery-bg" data-category="Custom Outfit"></div>
+                    <div class="gallery-overlay"><span>View Design</span></div>
+                </div>
+                <div class="gallery-item" data-category="Designer Wear">
+                    <div class="gallery-bg" data-category="Designer Wear"></div>
+                    <div class="gallery-overlay"><span>View Design</span></div>
+                </div>
+                <div class="gallery-item" data-category="Costumes">
+                    <div class="gallery-bg" data-category="Costume"></div>
+                    <div class="gallery-overlay"><span>View Design</span></div>
+                </div>
+                <div class="gallery-item" data-category="Custom Outfits">
+                    <div class="gallery-bg" data-category="Custom Outfit"></div>
+                    <div class="gallery-overlay"><span>View Design</span></div>
+                </div>
+                <div class="gallery-item" data-category="Designer Wear">
+                    <div class="gallery-bg" data-category="Designer Wear"></div>
+                    <div class="gallery-overlay"><span>View Design</span></div>
+                </div>
+                <div class="gallery-item" data-category="Costumes">
+                    <div class="gallery-bg" data-category="Costume"></div>
+                    <div class="gallery-overlay"><span>View Design</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Services Section -->
+    <section class="services-full">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag">What We Do</span>
+                <h2 class="section-title">Our Expertise</h2>
+                <p class="section-subtitle">Detailed overview of our fashion services.</p>
+            </div>
+            <div class="services-list">
+                <div class="service-full-card fade-in">
+                    <div class="service-full-icon">👗</div>
+                    <div class="service-full-content">
+                        <h3>Custom Outfits</h3>
+                        <p>From concept to creation, we design and stitch clothing that's uniquely yours. Share your
+                            ideas, and we'll bring them to life with meticulous attention to every detail.</p>
+                        <a href="#contact" class="service-full-btn">Start Your Order</a>
+                    </div>
+                </div>
+                <div class="service-full-card fade-in">
+                    <div class="service-full-icon">✨</div>
+                    <div class="service-full-content">
+                        <h3>Designer Wear</h3>
+                        <p>Explore our curated collection of ready-to-wear pieces that embody contemporary elegance.
+                            Each piece is crafted with premium materials and impeccable tailoring.</p>
+                        <a href="#contact" class="service-full-btn">Explore Collection</a>
+                    </div>
+                </div>
+                <div class="service-full-card fade-in">
+                    <div class="service-full-icon">🧵</div>
+                    <div class="service-full-content">
+                        <h3>Costume Design</h3>
+                        <p>Stand out with custom costumes designed specifically for your performances, events, or
+                            special occasions. We understand the art of creating memorable looks.</p>
+                        <a href="#contact" class="service-full-btn">Discuss Your Needs</a>
+                    </div>
+                </div>
+                <div class="service-full-card fade-in">
+                    <div class="service-full-icon">💃</div>
+                    <div class="service-full-content">
+                        <h3>Personal Styling</h3>
+                        <p>Let us help you discover your personal style. Our one-on-one consultation sessions are
+                            designed to curate a wardrobe that reflects your unique personality.</p>
+                        <a href="#contact" class="service-full-btn">Book Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Testimonials</span>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Hear from our happy customers.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Absolutely loved my custom outfit! Yaara Design understood exactly what
+                        I wanted and delivered beyond my expectations. The attention to detail is remarkable."</p>
+                    <span class="testimonial-author">— Ashvini B.</span>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"The costume for my dance performance was stunning! Received so many
+                        compliments. The team was professional and brought my vision to life beautifully."</p>
+                    <span class="testimonial-author">— Ashiriya B.</span>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Such a wonderful experience working with Yaara Design. The personal
+                        styling session helped me discover styles I never knew would suit me. Highly recommended!"</p>
+                    <span class="testimonial-author">— Fazil B.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Let's Create Something Beautiful</h2>
+                <p class="section-subtitle">Ready to design your dream outfit? Send us an enquiry and we'll get back to
+                    you.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>Contact Us</h3>
+                    <p>We'd love to hear from you. Whether you have a question about our services, pricing, or just want
+                        to say hello, we'll try our best to get back to you within 24 hours.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                                        fill="#25D366" />
+                                </svg>
+                            </div>
+                            <span>WhatsApp: +91 8015671607</span>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                                        fill="#E4405F" />
+                                </svg>
+                            </div>
+                            <span>@yaaraadesigns</span>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-method-icon">✉️</div>
+                            <span>enquire@yaaradesign.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <form id="enquiryForm" onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Your Name *</label>
+                            <input type="text" id="name" class="form-input" required placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" class="form-input" required
+                                placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="service">Service Interested In</label>
+                            <select id="service" class="form-select">
+                                <option value="">Select a service</option>
+                                <option value="custom-outfits">Custom Outfits</option>
+                                <option value="designer-wear">Designer Wear</option>
+                                <option value="costume-design">Costume Design</option>
+                                <option value="personal-styling">Personal Styling</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">Your Message *</label>
+                            <textarea id="message" class="form-textarea" required
+                                placeholder="Tell us about your requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Send Enquiry</button>
+                        <div class="form-success" id="formSuccess">
+                            Thank you! Your enquiry has been sent. We'll get back to you soon. 💜
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-main">YAARA</span>
+                    </div>
+                    <p>Custom fashion made with love. We create beautiful, one-of-a-kind pieces tailored to your unique
+                        style.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/yaaraadesigns?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                            target="_blank" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                                    fill="currentColor" />
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/918015671607" target="_blank" aria-label="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                                    fill="currentColor" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Custom Outfits</a></li>
+                        <li><a href="#contact">Designer Wear</a></li>
+                        <li><a href="#contact">Costume Design</a></li>
+                        <li><a href="#contact">Personal Styling</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Follow Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.me/918015671607">WhatsApp</a></li>
+                        <li><a href="https://www.instagram.com/yaaraadesigns">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Yaara Design. All rights reserved. Made with love 🧶</p>
+            </div>
+        </div>
+    </footer>
+
+<!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/918015671607" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="white"/>
+        </svg>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active Navigation Link on Scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function updateActiveNav() {
+            let scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + sectionId) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+
+        // Fade-in Animation on Scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Gallery Filter
+        const galleryFilters = document.querySelectorAll('.gallery-filter');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        galleryFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                galleryFilters.forEach(f => f.classList.remove('active'));
+                filter.classList.add('active');
+
+                const filterValue = filter.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category').toLowerCase().includes(filterValue)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Form Submission
+        function submitForm(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            if (name && phone && message) {
+                const formSuccess = document.getElementById('formSuccess');
+                formSuccess.classList.add('show');
+
+                // Reset form
+                document.getElementById('enquiryForm').reset();
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    formSuccess.classList.remove('show');
+                }, 5000);
+            }
+        }
+
+        // Header Background on Scroll
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
