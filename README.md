@@ -1,90 +1,133 @@
-# Yaara Design - Fashion Brand Website
+# Yaara Design - Complete Guide
 
-A modern, mobile-first professional website for "Yaara Design" - a custom fashion and costume designer brand.
+## Live Website
 
-## 🌐 Live Website
+- **Frontend**: <https://yaara-design-3.onrender.com>
+- **Admin Panel**: <https://yaara-design-3.onrender.com/admin>
 
-**Frontend**: https://yaara-design.onrender.com  
-**Admin Panel**: https://yaara-design.onrender.com/admin
+---
 
-## Features
+## How to Manage Content
 
-- **Home Page** - Hero with "Custom Fashion Made With Love", services preview
-- **About Section** - Brand story and philosophy
-- **Services** - Custom Outfits, Designer Wear, Costume Design, Personal Styling
-- **Gallery** - Portfolio grid with category filters
-- **Contact Form** - Enquiry submission with validation
-- **Admin Panel** - Manage services, gallery, testimonials, enquiries
-- **Mobile Responsive** - Works on all devices
+### 1. Adding/Editing Services
 
-## Design
+1. Go to: <https://yaara-design-3.onrender.com/admin>
+2. Click **Services** in the sidebar
+3. To **Add New Service**:
+   - Click "+ Add New Service" button
+   - Fill in the form:
+     - **Name**: Service name (e.g., "Custom Outfits")
+     - **Slug**: URL-friendly version (e.g., "custom-outfits")
+     - **Icon**: Emoji icon (👗 ✨ 🎭 💎)
+     - **Short Description**: Brief text for preview cards
+     - **Full Description**: Detailed description
+   - Click **Save**
+4. To **Edit**: Click the "Edit" button on any service
+5. To **Delete**: Click the "Delete" button
 
-- **Color Palette**: Soft neutral cream/beige (#F5F0EB, #D4A574)
-- **Typography**: Cormorant Garamond (headings) + Jost (body)
-- **Style**: Minimal luxury, fashion editorial look
+---
 
-## Tech Stack
+### 2. Adding Gallery Images
 
-- **Frontend**: HTML, CSS, JavaScript (vanilla)
-- **Backend**: Python Flask
-- **Database**: JSON file-based
+**Getting Image URLs:**
 
-## Local Development
+Since we don't have file upload, you need image URLs. Here's how:
 
-### Prerequisites
-- Python 3.10+
-- Flask
+**Option A: Use Free Image Hosting**
 
-### Installation
+1. Go to <https://imgbb.com> (free, easy)
+2. Upload your image
+3. Right-click the image → "Copy Image Address" (URL)
+4. Use that URL in the admin panel
 
-```
-bash
-cd p1
-pip install -r requirements.txt
-python app.py
-```
+**Option B: Use Existing URLs**
 
-The server will start at http://localhost:5000
+- If you have images hosted elsewhere, copy their URLs
 
-## Deployment to Render.com (Free)
+**Adding to Gallery:**
 
-1. **Push to GitHub**
-   - Create a new repository on GitHub
-   - Push this `p1` folder to GitHub
+1. Go to Admin Panel → **Gallery**
+2. Click **+ Add New Item**
+3. Fill in:
+   - **Title**: Name of the design
+   - **Category**: Choose (Custom Outfits / Designer Wear / Costumes / Styling)
+   - **Image URL**: Paste your image URL here
+   - **Description**: Optional description
+4. Click **Save**
 
-2. **Deploy on Render**
-   - Go to https://dashboard.render.com
-   - Create a new "Web Service"
-   - Connect your GitHub repository
-   - Use these settings:
-     - Build Command: `pip install -r requirements.txt`
-     - Start Command: `python app.py`
-   - Click "Deploy"
+**Editing Gallery:**
 
-3. **Get Your URL**
-   - After deployment, you'll get a URL like: `https://your-app.onrender.com`
+- Click "Edit" to modify any item
+- Click "Delete" to remove an item
 
-## Project Structure
+---
 
-```
-p1/
-├── app.py              # Flask server
-├── requirements.txt    # Python dependencies
-├── render.yaml         # Render deployment config
-├── frontend/
-│   └── index.html      # Main website
-├── admin/
-│   └── index.html      # Admin panel
-└── backend/
-    ├── database.json   # Data storage
-    └── seed.js        # Sample data
-```
+### 3. Managing Testimonials
 
-## Contact
+1. Go to Admin Panel → **Testimonials**
+2. To **Add New**:
+   - Click "+ Add New Testimonial"
+   - **Name**: Customer name
+   - **Review**: Their feedback text
+   - **Rating**: Select stars (1-5)
+   - Click **Save**
+3. To **Edit/Delete**: Use the buttons on each testimonial
 
-- Instagram: @yaaraadesigns
-- WhatsApp: +91 8015671607
+---
 
-## License
+### 4. Managing Enquiries
 
-© Yaara Design. All rights reserved.
+When customers fill out the contact form on the website, enquiries appear here.
+
+1. Go to Admin Panel → **Enquiries**
+2. View all customer messages
+3. Change **Status**:
+   - **New** - Just received
+   - **Contacted** - You responded
+   - **Completed** - Resolved
+   - **Archived** - Old/unneeded
+4. To **Delete**: Click the Delete button
+
+---
+
+## How to Delete Items
+
+In every section (Services, Gallery, Testimonials, Enquiries):
+
+1. Find the item you want to delete
+2. Click the **Delete** button (red, on the right)
+3. Confirm the deletion in the popup
+
+---
+
+## Customizing the Design
+
+### Colors and Styling
+
+The design uses these colors (in CSS):
+
+- **Primary**: #2C2C2C (Dark Charcoal)
+- **Accent**: #D4A574 (Warm Beige/Gold)
+- **Background**: #FDFBF9 (Off White)
+- **Secondary**: #F5F0EB (Warm Cream)
+
+### Changing Colors
+
+To change colors, you would need to edit the frontend code. Contact me if you want custom colors!
+
+---
+
+## Need Help?
+
+If you have questions or need modifications:
+
+- Check the admin panel sections
+- All data saves automatically to the database
+
+---
+
+## Notes
+
+- The website is hosted on Render (free tier)
+- Data is stored in a JSON file (resets occasionally on free tier)
+- For permanent storage, you would need a database upgrade
