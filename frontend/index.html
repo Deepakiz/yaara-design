@@ -1721,74 +1721,108 @@
         loadServices();
         loadTestimonials();
 
-        // Load Services from API
+        // Static fallback data
+        const defaultServices = [
+            { icon: '👗', name: 'Custom Outfits', description: 'Bespoke clothing designed and stitched exclusively for you.' },
+            { icon: '✨', name: 'Designer Wear', description: 'Ready-to-wear collections featuring contemporary elegance.' },
+            { icon: '🧵', name: 'Costume Design', description: 'Custom costumes for performances and special occasions.' },
+            { icon: '💃', name: 'Personal Styling', description: 'One-on-one consultation to curate your perfect wardrobe.' }
+        ];
+
+        const defaultTestimonials = [
+            { name: 'Ashvini B.', text: "Absolutely loved my custom outfit! Yaara Design understood exactly what I wanted and delivered beyond my expectations.", stars: 5 },
+            { name: 'Ashiriya B.', text: "The costume for my dance performance was stunning! Received so many compliments.", stars: 5 },
+            { name: 'Fazil B.', text: "Such a wonderful experience working with Yaara Design. The personal styling session helped me discover styles I never knew would suit me.", stars: 5 }
+        ];
+
+        // Load Services from API (with fallback to static content)
         async function loadServices() {
             try {
                 const response = await fetch('/api/services');
                 const result = await response.json();
 
-                if (result.status === 'success' && result.data.length > 0) {
+                if (result.status === 'success' && result.data && result.data.length > 0) {
                     const services = result.data;
-
-                    // Update services preview grid
-                    const servicesGrid = document.querySelector('.services-grid');
-                    servicesGrid.innerHTML = services.slice(0, 4).map(service => {
-                        const title = service.title || service.name || 'Service';
-                        const desc = service.description || service.shortDescription || '';
-                        const icon = service.icon || '👗';
-                        return `
-                        <div class="service-card fade-in">
-                            <span class="service-icon">${icon}</span>
-                            <h3>${title}</h3>
-                            <p>${desc}</p>
-                            <a href="#contact" class="service-link">Enquire Now →</a>
-                        </div>
-                    `}).join('');
-
-                    // Update full services list
-                    const servicesList = document.querySelector('.services-list');
-                    servicesList.innerHTML = services.map(service => {
-                        const title = service.title || service.name || 'Service';
-                        const desc = service.description || service.fullDescription || service.shortDescription || '';
-                        const icon = service.icon || '👗';
-                        return `
-                        <div class="service-full-card fade-in">
-                            <div class="service-full-icon">${icon}</div>
-                            <div class="service-full-content">
-                                <h3>${title}</h3>
-                                <p>${desc}</p>
-                                <a href="#contact" class="service-full-btn">Start Your Order</a>
-                            </div>
-                        </div>
-                    `}).join('');
+                    renderServices(services);
+                } else {
+                    // Use default services if API returns empty
+                    renderServices(defaultServices);
                 }
             } catch (error) {
-                console.error('Error loading services:', error);
+                console.log('Using default services');
+                renderServices(defaultServices);
             }
         }
 
-        // Load Testimonials from API
+        function renderServices(services) {
+            // Update services preview grid
+            const servicesGrid = document.querySelector('.services-grid');
+            if (servicesGrid) {
+                servicesGrid.innerHTML = services.slice(0, 4).map(service => {
+                    const title = service.title || service.name || 'Service';
+                    const desc = service.description || service.shortDescription || '';
+                    const icon = service.icon || '👗';
+                    return `
+                    <div class="service-card fade-in">
+                        <span class="service-icon">${icon}</span>
+                        <h3>${title}</h3>
+                        <p>${desc}</p>
+                        <a href="#contact" class="service-link">Enquire Now →</a>
+                    </div>
+                `}).join('');
+            }
+
+            // Update full services list
+            const servicesList = document.querySelector('.services-list');
+            if (servicesList) {
+                servicesList.innerHTML = services.map(service => {
+                    const title = service.title || service.name || 'Service';
+                    const desc = service.description || service.fullDescription || service.shortDescription || '';
+                    const icon = service.icon || '👗';
+                    return `
+                    <div class="service-full-card fade-in">
+                        <div class="service-full-icon">${icon}</div>
+                        <div class="service-full-content">
+                            <h3>${title}</h3>
+                            <p>${desc}</p>
+                            <a href="#contact" class="service-full-btn">Start Your Order</a>
+                        </div>
+                    </div>
+                `}).join('');
+            }
+        }
+
+        // Load Testimonials from API (with fallback to static content)
         async function loadTestimonials() {
             try {
                 const response = await fetch('/api/testimonials');
                 const result = await response.json();
 
-                if (result.status === 'success' && result.data.length > 0) {
-                    const testimonialsGrid = document.querySelector('.testimonials-grid');
-                    testimonialsGrid.innerHTML = result.data.map(testimonial => {
-                        const stars = '★'.repeat(testimonial.stars || testimonial.rating || 5);
-                        const text = testimonial.text || testimonial.review || '';
-                        const name = testimonial.name || 'Customer';
-                        return `
-                        <div class="testimonial-card fade-in">
-                            <div class="testimonial-stars">${stars}</div>
-                            <p class="testimonial-text">"${text}"</p>
-                            <span class="testimonial-author">— ${name}</span>
-                        </div>
-                    `}).join('');
+                if (result.status === 'success' && result.data && result.data.length > 0) {
+                    renderTestimonials(result.data);
+                } else {
+                    renderTestimonials(defaultTestimonials);
                 }
             } catch (error) {
-                console.error('Error loading testimonials:', error);
+                console.log('Using default testimonials');
+                renderTestimonials(defaultTestimonials);
+            }
+        }
+
+        function renderTestimonials(testimonials) {
+            const testimonialsGrid = document.querySelector('.testimonials-grid');
+            if (testimonialsGrid) {
+                testimonialsGrid.innerHTML = testimonials.map(testimonial => {
+                    const stars = '★'.repeat(testimonial.stars || testimonial.rating || 5);
+                    const text = testimonial.text || testimonial.review || '';
+                    const name = testimonial.name || 'Customer';
+                    return `
+                    <div class="testimonial-card fade-in">
+                        <div class="testimonial-stars">${stars}</div>
+                        <p class="testimonial-text">"${text}"</p>
+                        <span class="testimonial-author">— ${name}</span>
+                    </div>
+                `}).join('');
             }
         }
     </script>
