@@ -31,6 +31,9 @@
       "shortDescription": "One-on-one consultation to curate your perfect wardrobe",
       "fullDescription": "Let us help you discover your personal style. Our one-on-one consultation sessions are designed to curate a wardrobe that reflects your unique personality.",
       "order": 4
+    },
+    {
+      "id": 1771825988029
     }
   ],
   "gallery": [
@@ -80,12 +83,6 @@
   ],
   "testimonials": [
     {
-      "id": 1,
-      "name": "Ashvini B.",
-      "text": "Absolutely loved my custom outfit! Yaara Design understood exactly what I wanted and delivered beyond my expectations. The attention to detail is remarkable.",
-      "rating": 5
-    },
-    {
       "id": 2,
       "name": "Ashiriya B.",
       "text": "The costume for my dance performance was stunning! Received so many compliments. The team was professional and brought my vision to life beautifully.",
@@ -98,5 +95,11 @@
       "rating": 5
     }
   ],
-  "enquiries": []
+  "enquiries": [
+    {
+      "id": 1771825783666,
+      "createdAt": "2026-02-23T05:49:43.666Z",
+      "status": "new"
+    }
+  ]
 }

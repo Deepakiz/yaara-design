@@ -1718,6 +1718,66 @@
         }
 
         loadGallery();
+        loadServices();
+        loadTestimonials();
+
+        // Load Services from API
+        async function loadServices() {
+            try {
+                const response = await fetch('/api/services');
+                const result = await response.json();
+
+                if (result.status === 'success' && result.data.length > 0) {
+                    // Update services preview grid
+                    const servicesGrid = document.querySelector('.services-grid');
+                    servicesGrid.innerHTML = result.data.slice(0, 4).map(service => `
+                        <div class="service-card fade-in">
+                            <span class="service-icon">${service.icon || '👗'}</span>
+                            <h3>${service.name || service.title}</h3>
+                            <p>${service.shortDescription || service.description || ''}</p>
+                            <a href="#contact" class="service-link">Enquire Now →</a>
+                        </div>
+                    `).join('');
+
+                    // Update full services list
+                    const servicesList = document.querySelector('.services-list');
+                    servicesList.innerHTML = result.data.map(service => `
+                        <div class="service-full-card fade-in">
+                            <div class="service-full-icon">${service.icon || '👗'}</div>
+                            <div class="service-full-content">
+                                <h3>${service.name || service.title}</h3>
+                                <p>${service.fullDescription || service.description || ''}</p>
+                                <a href="#contact" class="service-full-btn">Start Your Order</a>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading services:', error);
+            }
+        }
+
+        // Load Testimonials from API
+        async function loadTestimonials() {
+            try {
+                const response = await fetch('/api/testimonials');
+                const result = await response.json();
+
+                if (result.status === 'success' && result.data.length > 0) {
+                    const testimonialsGrid = document.querySelector('.testimonials-grid');
+                    const stars = '★'.repeat(5);
+                    testimonialsGrid.innerHTML = result.data.map(testimonial => `
+                        <div class="testimonial-card fade-in">
+                            <div class="testimonial-stars">${stars}</div>
+                            <p class="testimonial-text">"${testimonial.text || testimonial.review}"</p>
+                            <span class="testimonial-author">— ${testimonial.name}</span>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading testimonials:', error);
+            }
+        }
     </script>
 </body>
 
