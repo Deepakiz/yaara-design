@@ -26,14 +26,11 @@
     },
     {
       "id": 4,
-      "icon": "💃",
+      "icon": "💎",
       "name": "Personal Styling",
       "shortDescription": "One-on-one consultation to curate your perfect wardrobe",
       "fullDescription": "Let us help you discover your personal style. Our one-on-one consultation sessions are designed to curate a wardrobe that reflects your unique personality.",
       "order": 4
-    },
-    {
-      "id": 1771825988029
     }
   ],
   "gallery": [
@@ -41,47 +38,46 @@
       "id": 1,
       "category": "outfits",
       "title": "Custom Outfit 1",
-      "image": ""
+      "imageUrl": ""
     },
     {
       "id": 2,
       "category": "designer",
       "title": "Designer Wear 1",
-      "image": ""
+      "imageUrl": ""
     },
     {
       "id": 3,
       "category": "costumes",
       "title": "Costume 1",
-      "image": ""
+      "imageUrl": ""
     },
     {
       "id": 4,
       "category": "outfits",
       "title": "Custom Outfit 2",
-      "image": ""
+      "imageUrl": ""
     },
     {
       "id": 5,
       "category": "designer",
       "title": "Designer Wear 2",
-      "image": ""
+      "imageUrl": ""
     },
     {
       "id": 6,
       "category": "costumes",
       "title": "Costume 2",
-      "image": ""
-    },
-    {
-      "title": "ACE",
-      "category": "custom-outfits",
-      "imageUrl": "https://images.search.yahoo.com/images/view;_ylt=AwrOowI54ZppbewabGCJzbkF;_ylu=c2VjA3NyBHNsawNpbWcEb2lkA2M3ZDdmMDRhNDIyZGUxODZiNGNjOWY3MWQyOWU2YTVlBGdwb3MDMQRpdANiaW5n?back=https%3A%2F%2Fimages.search.yahoo.com%2Fsearch%2Fimages%3Fp%3Dace%2Bimage%26type%3DE210US885G0%26fr%3Dmcafee%26fr2%3Dpiv-web%26tab%3Dorganic%26ri%3D1&w=1280&h=865&imgurl=images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com%2Ff%2Fcc0e6b00-2f1e-4a82-82f2-0e1cba01a733%2Fdfpjo0y-8f9401d7-c8d8-430e-a9fb-a36ef78cc706.jpg%2Fv1%2Ffill%2Fw_1280%2Ch_865%2Cq_75%2Cstrp%2Ffire_fist_ace_by_greatbigcanvas_dfpjo0y-fullview.jpg%3Ftoken%3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODY1IiwicGF0aCI6IlwvZlwvY2MwZTZiMDAtMmYxZS00YTgyLTgyZjItMGUxY2JhMDFhNzMzXC9kZnBqbzB5LThmOTQwMWQ3LWM4ZDgtNDMwZS1hOWZiLWEzNmVmNzhjYzcwNi5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.KPqEKQ585lF7xBByeCfoW-tRSflJaBQEgooghYMdUO0&rurl=https%3A%2F%2Fwww.deviantart.com%2Fgreatbigcanvas%2Fart%2FFire-Fist-Ace-949900642&size=181KB&p=ace+image&oid=c7d7f04a422de186b4cc9f71d29e6a5e&fr2=piv-web&fr=mcafee&tt=Fire+Fist+Ace+by+GreatBigCanvas+on+DeviantArt&b=0&ni=21&no=1&ts=&tab=organic&sigr=sLYqqfW_XwQO&sigb=aNvaeBeq_lG1&sigi=brZ_AeT0wUkE&sigt=y2mYbvKh92AM&.crumb=rqT4EI.gnlF&fr=mcafee&fr2=piv-web&type=E210US885G0",
-      "description": "",
-      "id": 1771757897248
+      "imageUrl": ""
     }
   ],
   "testimonials": [
+    {
+      "id": 1,
+      "name": "Ashvini B.",
+      "text": "Absolutely loved my custom outfit! Yaara Design understood exactly what I wanted and delivered beyond my expectations. The attention to detail is remarkable.",
+      "rating": 5
+    },
     {
       "id": 2,
       "name": "Ashiriya B.",
@@ -95,11 +91,5 @@
       "rating": 5
     }
   ],
-  "enquiries": [
-    {
-      "id": 1771825783666,
-      "createdAt": "2026-02-23T05:49:43.666Z",
-      "status": "new"
-    }
-  ]
+  "enquiries": []
 }

@@ -1728,29 +1728,39 @@
                 const result = await response.json();
 
                 if (result.status === 'success' && result.data.length > 0) {
+                    const services = result.data;
+
                     // Update services preview grid
                     const servicesGrid = document.querySelector('.services-grid');
-                    servicesGrid.innerHTML = result.data.slice(0, 4).map(service => `
+                    servicesGrid.innerHTML = services.slice(0, 4).map(service => {
+                        const title = service.title || service.name || 'Service';
+                        const desc = service.description || service.shortDescription || '';
+                        const icon = service.icon || '👗';
+                        return `
                         <div class="service-card fade-in">
-                            <span class="service-icon">${service.icon || '👗'}</span>
-                            <h3>${service.name || service.title}</h3>
-                            <p>${service.shortDescription || service.description || ''}</p>
+                            <span class="service-icon">${icon}</span>
+                            <h3>${title}</h3>
+                            <p>${desc}</p>
                             <a href="#contact" class="service-link">Enquire Now →</a>
                         </div>
-                    `).join('');
+                    `}).join('');
 
                     // Update full services list
                     const servicesList = document.querySelector('.services-list');
-                    servicesList.innerHTML = result.data.map(service => `
+                    servicesList.innerHTML = services.map(service => {
+                        const title = service.title || service.name || 'Service';
+                        const desc = service.description || service.fullDescription || service.shortDescription || '';
+                        const icon = service.icon || '👗';
+                        return `
                         <div class="service-full-card fade-in">
-                            <div class="service-full-icon">${service.icon || '👗'}</div>
+                            <div class="service-full-icon">${icon}</div>
                             <div class="service-full-content">
-                                <h3>${service.name || service.title}</h3>
-                                <p>${service.fullDescription || service.description || ''}</p>
+                                <h3>${title}</h3>
+                                <p>${desc}</p>
                                 <a href="#contact" class="service-full-btn">Start Your Order</a>
                             </div>
                         </div>
-                    `).join('');
+                    `}).join('');
                 }
             } catch (error) {
                 console.error('Error loading services:', error);
@@ -1765,14 +1775,17 @@
 
                 if (result.status === 'success' && result.data.length > 0) {
                     const testimonialsGrid = document.querySelector('.testimonials-grid');
-                    const stars = '★'.repeat(5);
-                    testimonialsGrid.innerHTML = result.data.map(testimonial => `
+                    testimonialsGrid.innerHTML = result.data.map(testimonial => {
+                        const stars = '★'.repeat(testimonial.stars || testimonial.rating || 5);
+                        const text = testimonial.text || testimonial.review || '';
+                        const name = testimonial.name || 'Customer';
+                        return `
                         <div class="testimonial-card fade-in">
                             <div class="testimonial-stars">${stars}</div>
-                            <p class="testimonial-text">"${testimonial.text || testimonial.review}"</p>
-                            <span class="testimonial-author">— ${testimonial.name}</span>
+                            <p class="testimonial-text">"${text}"</p>
+                            <span class="testimonial-author">— ${name}</span>
                         </div>
-                    `).join('');
+                    `}).join('');
                 }
             } catch (error) {
                 console.error('Error loading testimonials:', error);
